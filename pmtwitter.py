@@ -14,7 +14,11 @@ access_token_secret = 'mytokensecret'
 api = twitter.Api(consumer_key=consumer_key, consumer_secret=consumer_secret, access_token_key=access_token_key, access_token_secret=access_token_secret)
 #print api.VerifyCredentials()
 
-def search(query, rpp, log=False):
+def search(query, rpp=10, log=False):
+    '''
+    query: the search term
+    rpp: results per page
+    '''
     url = "http://search.twitter.com/search.json?rpp=%d&q=%s" % (rpp,query)
     result = urllib.urlopen(url)
     dict = simplejson.loads(result.read())
